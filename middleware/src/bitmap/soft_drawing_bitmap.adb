@@ -525,9 +525,9 @@ package body Soft_Drawing_Bitmap is
       Y     : Integer := Radius;
    begin
       Dispatch (Buffer).Set_Pixel ((Center.X, Center.Y + Radius));
-      Dispatch (Buffer).Set_Pixel ((Center.X, Center.Y - Radius));
+      Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X, Center.Y - Radius));
       Dispatch (Buffer).Set_Pixel ((Center.X + Radius, Center.Y));
-      Dispatch (Buffer).Set_Pixel ((Center.X - Radius, Center.Y));
+      Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X - Radius, Center.Y));
 
       while X < Y loop
          if F >= 0 then
@@ -539,13 +539,13 @@ package body Soft_Drawing_Bitmap is
          ddF_X := ddF_X + 2;
          F := F + ddF_X + 1;
          Dispatch (Buffer).Set_Pixel ((Center.X + X, Center.Y + Y));
-         Dispatch (Buffer).Set_Pixel ((Center.X - X, Center.Y + Y));
-         Dispatch (Buffer).Set_Pixel ((Center.X + X, Center.Y - Y));
-         Dispatch (Buffer).Set_Pixel ((Center.X - X, Center.Y - Y));
+         Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X - X, Center.Y + Y));
+         Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X + X, Center.Y - Y));
+         Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X - X, Center.Y - Y));
          Dispatch (Buffer).Set_Pixel ((Center.X + Y, Center.Y + X));
-         Dispatch (Buffer).Set_Pixel ((Center.X - Y, Center.Y + X));
-         Dispatch (Buffer).Set_Pixel ((Center.X + Y, Center.Y - X));
-         Dispatch (Buffer).Set_Pixel ((Center.X - Y, Center.Y - X));
+         Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X - Y, Center.Y + X));
+         Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X + Y, Center.Y - X));
+         Dispatch (Buffer).Set_Pixel (Dispatch (Buffer).ToPoint(Center.X - Y, Center.Y - X));
       end loop;
    end Draw_Circle;
 

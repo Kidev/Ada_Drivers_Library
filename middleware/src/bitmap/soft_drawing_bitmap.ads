@@ -53,6 +53,9 @@ package Soft_Drawing_Bitmap is
      (Buffer : Soft_Drawing_Bitmap_Buffer)
       return Bitmap_Color;
 
+   function ToPoint(Buffer : Soft_Drawing_Bitmap_Buffer'Class; X, Y : Integer) return Point
+     is (((if X < 0 then Buffer.Width else X), (if Y < 0 then Buffer.Height else Y)));
+
    overriding
    procedure Set_Pixel
      (Buffer  : in out Soft_Drawing_Bitmap_Buffer;
