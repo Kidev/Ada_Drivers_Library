@@ -288,6 +288,12 @@ package HAL.Bitmap is
 
    function Buffer_Size (Buffer : Bitmap_Buffer) return Natural is abstract;
 
+   function Opposite (Color : Bitmap_Color) return Bitmap_Color is
+     (Color.Alpha,
+      255 - Color.Red,
+      255 - Color.Green,
+      255 - Color.Blue);
+
    Transparent         : constant Bitmap_Color := (000, 000, 000, 000);
    Dark_Red            : constant Bitmap_Color := (255, 139, 000, 000);
    Brown               : constant Bitmap_Color := (255, 165, 042, 042);
